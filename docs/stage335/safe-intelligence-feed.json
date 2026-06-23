@@ -1,0 +1,74 @@
+{
+  "stage": 335,
+  "system": "Safe AI Vulnerability Intelligence Fetcher",
+  "created_at": "2026-05-28T05:44:57.165336+00:00",
+  "purpose": "Collect safe AI vulnerability intelligence metadata for audit, while keeping reproduction logic private.",
+  "public_boundary": {
+    "publish_safe_metadata": true,
+    "publish_exploit_code": false,
+    "publish_harmful_prompts": false,
+    "publish_weaponized_payloads": false,
+    "publish_attack_automation": false
+  },
+  "private_boundary": {
+    "allow_internal_runner_templates": true,
+    "allow_behavior_matching_rules": true,
+    "allow_private_reproduction_conditions": true,
+    "require_sandbox": true,
+    "require_audit_log": true
+  },
+  "items": [
+    {
+      "id": "SAFE-AI-INTEL-001",
+      "category": "Prompt Injection",
+      "katakana": "プロンプト・インジェクション",
+      "summary": "AIが外部入力によって本来の指示を無視する可能性があるリスク。",
+      "source_type": "taxonomy",
+      "source_name": "OWASP LLM style risk category",
+      "published_or_observed_at": "2026-05-28T05:44:57.165336+00:00",
+      "public_safety_level": "metadata-only",
+      "internal_runner_required": true,
+      "public_disclosure": {
+        "contains_exploit_code": false,
+        "contains_harmful_prompt": false,
+        "contains_weaponized_payload": false,
+        "contains_attack_automation": false
+      }
+    },
+    {
+      "id": "SAFE-AI-INTEL-002",
+      "category": "Data Leakage",
+      "katakana": "データ・リーケージ",
+      "summary": "AIが秘密情報や内部情報を誤って出力する可能性があるリスク。",
+      "source_type": "research-or-advisory",
+      "source_name": "AI security research / advisory pattern",
+      "published_or_observed_at": "2026-05-28T05:44:57.165336+00:00",
+      "public_safety_level": "metadata-only",
+      "internal_runner_required": true,
+      "public_disclosure": {
+        "contains_exploit_code": false,
+        "contains_harmful_prompt": false,
+        "contains_weaponized_payload": false,
+        "contains_attack_automation": false
+      }
+    },
+    {
+      "id": "SAFE-AI-INTEL-003",
+      "category": "Tool Misuse",
+      "katakana": "ツール・ミスユース",
+      "summary": "AIエージェントが外部ツールを不適切に使う可能性があるリスク。",
+      "source_type": "agent-security",
+      "source_name": "Agent / tool-use security pattern",
+      "published_or_observed_at": "2026-05-28T05:44:57.165336+00:00",
+      "public_safety_level": "metadata-only",
+      "internal_runner_required": true,
+      "public_disclosure": {
+        "contains_exploit_code": false,
+        "contains_harmful_prompt": false,
+        "contains_weaponized_payload": false,
+        "contains_attack_automation": false
+      }
+    }
+  ],
+  "feed_sha256": "0064551bdd86f0c35c47960ce327dd27d8e65078c19c67b89d8ed09fdaf6e191"
+}

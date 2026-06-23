@@ -1,0 +1,45 @@
+{
+  "stage": 340,
+  "type": "qsp_session_result",
+  "session_id": "verification-session-74239f8d385143c285851878c2dedd78",
+  "source_stage": 339,
+  "behavior_decision": "pass",
+  "policy_result": "accept",
+  "action": "allow",
+  "reason": [
+    "behavior_passed",
+    "evidence_binding_satisfied",
+    "signature_valid",
+    "verification_ok",
+    "trust_score_sufficient",
+    "policy_accept"
+  ],
+  "trust_score": {
+    "time": 1.0,
+    "integrity": 1.0,
+    "execution": 1.0,
+    "identity": 1.0,
+    "total": 1.0
+  },
+  "evidence_checks": {
+    "same_target": true,
+    "evidence_files_present": true,
+    "sha256_bound": true,
+    "signature_present": true
+  },
+  "signature_checks": {
+    "signature_valid": true,
+    "verification_ok": true
+  },
+  "deterministic_protocol": {
+    "deterministic": true,
+    "method": "same canonical input evaluated twice must produce the same canonical decision hash",
+    "input_fingerprint_sha256": "a2317d04938da3f9f7a85b75839e820987bd68e1896c8d41a5b1f4f2122fa8cd",
+    "first_decision_sha256": "a1303268eb13cb356891893d241a97c21a615dd6c926b5f4749696fc528bf98b",
+    "second_decision_sha256": "a1303268eb13cb356891893d241a97c21a615dd6c926b5f4749696fc528bf98b",
+    "same_input_same_output": true
+  },
+  "fail_closed": true,
+  "stage339_result_sha256": "3e80382cf69d7b9fac4d661ba25c22ecb017e6bf2434ca565e0bfe55a4dab1af",
+  "created_at": "2026-06-04T05:29:16.161788+00:00"
+}

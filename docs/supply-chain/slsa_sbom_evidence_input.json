@@ -1,0 +1,62 @@
+{
+  "stage": 349,
+  "source_stage": 348,
+  "schema_version": "1.0.0",
+  "producer_id": "stage349-local-builder",
+  "source_git_commit": "local-uncommitted",
+  "schema_sha256": "da815f30de24341c1ad70755d5373bb88c5eacf81fb7e64ab5e1c78884f7fc65",
+  "evidence_sha256": "576fecf9d4740eea7d11e5425a258c0fcb306db39f7909761b7eb79462b0fa60",
+  "fail_closed": true,
+  "supply_chain_artifacts": [
+    {
+      "name": "stage237_spdx_sbom",
+      "source_stage": 237,
+      "artifact_type": "sbom",
+      "format": "SPDX",
+      "sha256_present": true,
+      "signature_present": false,
+      "provenance_present": true,
+      "policy_decision": "pass"
+    },
+    {
+      "name": "stage238_slsa_build_provenance",
+      "source_stage": 238,
+      "artifact_type": "slsa_provenance",
+      "format": "SLSA-Provenance",
+      "sha256_present": true,
+      "signature_present": true,
+      "provenance_present": true,
+      "policy_decision": "pass"
+    },
+    {
+      "name": "stage239_policy_gate",
+      "source_stage": 239,
+      "artifact_type": "policy_gate",
+      "format": "Policy-JSON",
+      "sha256_present": true,
+      "signature_present": false,
+      "provenance_present": true,
+      "policy_decision": "pass"
+    },
+    {
+      "name": "stage240_external_verification_gate",
+      "source_stage": 240,
+      "artifact_type": "artifact_attestation",
+      "format": "GitHub-Attestation",
+      "sha256_present": true,
+      "signature_present": true,
+      "provenance_present": true,
+      "policy_decision": "pass"
+    },
+    {
+      "name": "stage273_ed25519_review_evidence",
+      "source_stage": 273,
+      "artifact_type": "ed25519_review_evidence",
+      "format": "Ed25519",
+      "sha256_present": true,
+      "signature_present": true,
+      "provenance_present": true,
+      "policy_decision": "pass"
+    }
+  ]
+}

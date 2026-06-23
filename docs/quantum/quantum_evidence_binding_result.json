@@ -1,0 +1,30 @@
+{
+  "stage": 348,
+  "source_stage": 347,
+  "engine": "Quantum-Safe Evidence Binding Schema Layer",
+  "binding_decision": "pass",
+  "fail_closed": true,
+  "schema_validation_result": "valid",
+  "evidence_sha256": "5d01c5e8642b04c781707a6f6aa486b0ecab3dd05eb5a5597c3411659f81bc2a",
+  "schema_sha256": "d9cb0f320f7297d8c790f868477c27e56c07d416a7da6095795620d35c2b8190",
+  "producer_id": "stage348-local-builder",
+  "source_git_commit": "f7304fe",
+  "signature_present": true,
+  "sigstore_bundle_present": true,
+  "reasons": [
+    "schema_validation_checked",
+    "evidence_sha256_bound",
+    "source_git_commit_bound",
+    "signature_presence_checked",
+    "sigstore_bundle_presence_checked",
+    "unknown_is_fail_closed"
+  ],
+  "safety_boundary": {
+    "safe_metadata_only": true,
+    "no_private_keys": true,
+    "no_raw_qkd_key_material": true,
+    "no_exploit_code": true,
+    "no_real_crypto_backend_published": true
+  },
+  "created_at": "2026-06-12T08:12:50.052867+00:00"
+}

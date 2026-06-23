@@ -1,0 +1,76 @@
+{
+  "stage": 352,
+  "engine": "Hybrid Signature Manifest Verification Layer",
+  "source_stage": 351,
+  "created_at": "2026-06-18T05:29:09.763127+00:00",
+  "verified_target": {
+    "stage351_manifest_path": "docs/signatures/stage351_signature_manifest.json",
+    "stage350_enforcement_path": "docs/enforcement/enforcement_session.json",
+    "stage351_manifest_file_sha256": "dcccc32f35956699ad9d2a2bc49b0133ee44da3fc2ec17fcfea6a493a60263cc",
+    "stage350_enforcement_file_sha256": "5f6d0b17b52e071169b959a52e72c338613786ac60537b5327806d61b9a934f5",
+    "stage351_manifest_sha256_recorded": "292e716d326aae0fc9874be1b177934c45561137d71787972d796fff2417ada1",
+    "stage351_manifest_sha256_recomputed": "292e716d326aae0fc9874be1b177934c45561137d71787972d796fff2417ada1",
+    "stage350_session_sha256": "67c3e099658ec29646ce993d54466116b978739e501f518e579799ddad939cd9"
+  },
+  "checks": {
+    "stage351_manifest_exists": true,
+    "stage350_enforcement_exists": true,
+    "required_fields_present": true,
+    "stage351_stage_is_351": true,
+    "stage351_source_stage_is_350": true,
+    "stage350_session_hash_match": true,
+    "canonical_payload_hash_match": true,
+    "signature_manifest_hash_match": true,
+    "ci_context_consistent": true,
+    "sigstore_oidc_requirement_consistent": true,
+    "pqc_ml_dsa_intent_consistent": true,
+    "no_fake_signature_claim": true,
+    "no_private_key_reference": true
+  },
+  "signature_envelope_verification": {
+    "gpg": {
+      "present": false,
+      "verified": false,
+      "status": "not_present"
+    },
+    "sigstore_oidc": {
+      "present": false,
+      "verified": false,
+      "required_in_ci": true,
+      "status": "not_present_local_allowed"
+    },
+    "ed25519_witness": {
+      "present": false,
+      "verified": false,
+      "status": "not_present"
+    },
+    "pqc_ml_dsa": {
+      "present": false,
+      "verified": false,
+      "mode": "intent_only",
+      "status": "intent_only_not_real_signature"
+    }
+  },
+  "decision": "accept_metadata_only",
+  "violations": [],
+  "reasons": [
+    "stage351_manifest_structure_valid",
+    "stage350_session_sha256_matches",
+    "canonical_payload_sha256_matches",
+    "signature_manifest_sha256_matches",
+    "local_context_consistent",
+    "pqc_ml_dsa_intent_only_is_not_claimed_as_signature"
+  ],
+  "fail_closed_rule": {
+    "enabled": true,
+    "reject_on_hash_mismatch": true,
+    "block_ci_without_sigstore_oidc": true,
+    "reject_fake_pqc_signature_claim": true
+  },
+  "safety_boundary": {
+    "no_private_keys": true,
+    "no_raw_secrets": true,
+    "no_signature_forgery_claim": true,
+    "no_unverified_pqc_claim": true
+  }
+}

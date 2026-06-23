@@ -1,0 +1,53 @@
+{
+  "stage": 348,
+  "source_stage": 347,
+  "schema_version": "1.0.0",
+  "producer_id": "stage348-local-builder",
+  "source_git_commit": "f7304fe",
+  "evidence_sha256": "35c8c5ef4338d589e0bedb12c0d20189118736a2b3c2fa2b80b9cab46296577a",
+  "schema_sha256": "d9cb0f320f7297d8c790f868477c27e56c07d416a7da6095795620d35c2b8190",
+  "signature_present": true,
+  "sigstore_bundle_present": true,
+  "artifacts": [
+    {
+      "name": "pqc_session_metadata.json",
+      "domain": "PQC",
+      "algorithm": "ML-KEM",
+      "metadata_present": true,
+      "hash_bound": true,
+      "private_key_published": false,
+      "raw_key_material_published": false,
+      "absolute_security_claim": false
+    },
+    {
+      "name": "pqc_signature_metadata.json",
+      "domain": "PQC",
+      "algorithm": "ML-DSA",
+      "metadata_present": true,
+      "hash_bound": true,
+      "private_key_published": false,
+      "raw_key_material_published": false,
+      "absolute_security_claim": false
+    },
+    {
+      "name": "qkd_session_metadata.json",
+      "domain": "QKD",
+      "algorithm": "QKD-SESSION",
+      "metadata_present": true,
+      "hash_bound": true,
+      "private_key_published": false,
+      "raw_key_material_published": false,
+      "absolute_security_claim": false
+    },
+    {
+      "name": "qkd_failover_metadata.json",
+      "domain": "QKD",
+      "algorithm": "QKD-FAILOVER",
+      "metadata_present": true,
+      "hash_bound": true,
+      "private_key_published": false,
+      "raw_key_material_published": false,
+      "absolute_security_claim": false
+    }
+  ]
+}

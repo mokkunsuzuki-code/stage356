@@ -1,0 +1,16 @@
+Stage345 Artifact Download Verification Engine
+
+Decision: accept
+
+Checks:
+- github_run_success: OK
+- artifact_download_success: OK
+- github_anchor_receipt_found: OK
+- local_session_hash_match: OK
+- artifact_receipt_hash_match: OK
+- artifact_run_binding_match: OK
+- stage343_accept: OK
+- stage344_ready: OK
+
+Meaning:
+Stage345 turns GitHub artifact verification readiness into actual artifact download verification.

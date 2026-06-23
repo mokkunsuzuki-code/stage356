@@ -1,0 +1,24 @@
+{
+  "stage": 339,
+  "input_type": "unified-qsp-behavior-policy-action-input",
+  "behavior_decision": {
+    "source_file": "docs/behavior/behavior_decision.json",
+    "decision": "pass"
+  },
+  "trust_score": {
+    "time": 1.0,
+    "integrity": 1.0,
+    "execution": 1.0,
+    "identity": 1.0
+  },
+  "evidence_checks": {
+    "same_target": true,
+    "evidence_files_present": true,
+    "sha256_bound": true,
+    "signature_present": true
+  },
+  "signature_checks": {
+    "signature_valid": true,
+    "verification_ok": true
+  }
+}

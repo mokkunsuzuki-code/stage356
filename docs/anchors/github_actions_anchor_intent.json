@@ -1,0 +1,11 @@
+{
+  "stage": 342,
+  "type": "github_actions_anchor_intent",
+  "workflow": ".github/workflows/stage342-external-anchor.yml",
+  "expected_artifact": "stage342-external-anchor-artifacts",
+  "anchored_artifact": "docs/session/session_manifest.json",
+  "artifact_sha256": "0c8048d70faf08816e0829e1b50727ef82a3d7d94fe19d8c8e5b692ed6121be3",
+  "status": "pending_until_github_actions_run",
+  "created_at": "2026-06-06T04:28:14.524443+00:00",
+  "meaning": "This records the intent to anchor the signed verification session manifest through GitHub Actions."
+}

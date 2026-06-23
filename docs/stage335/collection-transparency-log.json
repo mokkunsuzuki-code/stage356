@@ -1,0 +1,14 @@
+[
+  {
+    "stage": 335,
+    "type": "safe-intelligence-collection-entry",
+    "timestamp": "2026-05-28T05:44:57.165336+00:00",
+    "artifact": "safe-intelligence-feed.json",
+    "artifact_sha256": "0064551bdd86f0c35c47960ce327dd27d8e65078c19c67b89d8ed09fdaf6e191",
+    "item_count": 3,
+    "source_count": 4,
+    "previous_hash": null,
+    "meaning": "This entry records a safe AI vulnerability intelligence collection result without publishing exploit details.",
+    "entry_hash": "1ffef6865116fca8cbd01c26df4b385837f9ff343f90fb0e86ec634bc535fe8d"
+  }
+]

@@ -1,0 +1,78 @@
+{
+  "stage": 355,
+  "engine": "Signature Key Status Verification & Revocation Enforcement Layer",
+  "source_stage": 354,
+  "created_at": "2026-06-23T00:38:09Z",
+  "previous_hash": "06596d80b22dac854d674f5820d8ead42f040204c9a3c26e5c853e9d4227c38f",
+  "verification_scope": {
+    "stage354_ledger": "docs/keys/stage354_key_rotation_ledger.json",
+    "stage354_result": "docs/keys/stage354_key_rotation_result.json",
+    "purpose": "Verify key status, revocation safety, signing-time validity readiness, and PQC intent-only safety."
+  },
+  "key_status_checks": {
+    "stage354_ledger_exists": true,
+    "stage354_result_exists": true,
+    "stage354_decision_acceptable": true,
+    "stage354_ledger_chain_valid": true,
+    "key_records_present": true,
+    "no_private_keys_published": true,
+    "no_pqc_intent_claimed_as_active": true,
+    "no_revoked_key_claimed_active": true,
+    "no_expired_key_claimed_active": true,
+    "signing_time_validity_checked": true,
+    "previous_hash_bound_to_stage354_entry_hash": true
+  },
+  "key_records_evaluated": [
+    {
+      "key_id": "gpg-not-present",
+      "algorithm": "GPG",
+      "present": false,
+      "status": "not_configured",
+      "valid_from": null,
+      "valid_until": null,
+      "revoked_at": null,
+      "private_key_published": false
+    },
+    {
+      "key_id": "sigstore-oidc-required-in-ci",
+      "algorithm": "Sigstore-OIDC",
+      "present": false,
+      "status": "required_in_ci_not_present_locally",
+      "valid_from": null,
+      "valid_until": null,
+      "revoked_at": null,
+      "private_key_published": false
+    },
+    {
+      "key_id": "ed25519-witness-not-present",
+      "algorithm": "Ed25519",
+      "present": false,
+      "status": "not_configured",
+      "valid_from": null,
+      "valid_until": null,
+      "revoked_at": null,
+      "private_key_published": false
+    },
+    {
+      "key_id": "pqc-ml-dsa-intent",
+      "algorithm": "ML-DSA",
+      "standard": "NIST FIPS 204",
+      "present": false,
+      "status": "intent_only",
+      "valid_from": null,
+      "valid_until": null,
+      "revoked_at": null,
+      "private_key_published": false
+    }
+  ],
+  "violations": [],
+  "safety_boundary": {
+    "no_private_keys": true,
+    "no_raw_secrets": true,
+    "no_real_key_rotation_claim": true,
+    "no_real_rekor_claim": true,
+    "no_real_pqc_signature_claim": true,
+    "pqc_ml_dsa_active_signature_not_claimed": true
+  },
+  "entry_hash": "cd30facf64978d7aecff0285ea092847049da0e55d7b8cb8d6b7bdcc323545a7"
+}

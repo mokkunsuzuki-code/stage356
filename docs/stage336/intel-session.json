@@ -1,0 +1,16 @@
+{
+  "stage": 336,
+  "name": "Safe Live Intelligence Fetcher",
+  "connected_to": "Stage335 Safe AI Vulnerability Intelligence Fetcher",
+  "mode": "safe-metadata-only",
+  "generated_at": "2026-05-30T05:05:08.261401+00:00",
+  "item_count": 48,
+  "source_file": "docs/intel/index.json",
+  "safety_boundary": {
+    "no_exploit_code": true,
+    "no_attack_prompts": true,
+    "no_payloads": true,
+    "no_reproduction_steps": true
+  },
+  "sha256": "2e4f29aea90438ad612cc30d48e82d47012fc286b384dcf7f1322361b16716cd"
+}

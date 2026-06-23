@@ -1,0 +1,38 @@
+Stage356 Runtime Verification & Fail-Closed Execution Gate
+
+Runtime decision:
+warn
+
+What Stage356 adds:
+- Reads Stage355 revocation enforcement result
+- Reads Stage355 key status verification result
+- Binds Stage355 entry_hash as Stage356 previous_hash
+- Blocks runtime if Stage355 decision is not accept_verification_ready
+- Blocks runtime if Stage355 violations exist
+- Blocks runtime if Stage355 hash binding fails
+- Blocks runtime if private key safety boundary fails
+- Blocks runtime if PQC intent_only is treated as active
+- Detects GitHub Actions runtime context
+
+Stage355 previous hash:
+cd30facf64978d7aecff0285ea092847049da0e55d7b8cb8d6b7bdcc323545a7
+
+Stage356 entry hash:
+f420837afc3755c69b09528ef7e5c6cc5c4fbdb3b89e5bc5cfad2060eb4dcab6
+
+Runtime context:
+- GitHub Actions: False
+- Local execution: True
+
+Generated files:
+- docs/runtime/stage356_runtime_fail_closed_gate.json
+- docs/runtime/stage356_runtime_execution_receipt.json
+- docs/runtime/stage356_runtime_summary.txt
+
+Safety boundary:
+- No private keys
+- No raw secrets
+- No real key rotation claim
+- No real Rekor claim
+- No real PQC signature claim
+- Runtime gate only

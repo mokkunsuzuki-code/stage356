@@ -1,0 +1,14 @@
+[
+  {
+    "stage": 333,
+    "type": "transparency-log-entry",
+    "timestamp": "2026-05-26T10:01:27.698518+00:00",
+    "artifact": "execution_session.json",
+    "artifact_sha256": "5a916f5b82e3156add3ecba5cb551c63d0eeaa359d135b14bfeebaf051a4ba1e",
+    "signature": "execution_session.json.sig",
+    "signature_present": true,
+    "previous_hash": null,
+    "meaning": "This entry records a signed execution session into an append-only transparency history.",
+    "entry_hash": "aa9546556ea801101f629bc9b4b73a001ba05a2666f6ee7f3cfcf00b5d5131bf"
+  }
+]

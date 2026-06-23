@@ -1,0 +1,93 @@
+{
+  "stage": 349,
+  "source_stage": 348,
+  "engine": "SLSA/SBOM Evidence Bridge Layer",
+  "bridge_decision": "pass",
+  "fail_closed": true,
+  "schema_sha256": "da815f30de24341c1ad70755d5373bb88c5eacf81fb7e64ab5e1c78884f7fc65",
+  "evidence_sha256": "639278f53f09c8fcb94ceaa4d087265a38f9d8b7550760f3d52eb0a948084e27",
+  "source_git_commit": "local-uncommitted",
+  "producer_id": "stage349-local-builder",
+  "schema_validation_result": "valid",
+  "errors": [],
+  "artifact_results": [
+    {
+      "artifact": "stage237_spdx_sbom",
+      "source_stage": 237,
+      "artifact_type": "sbom",
+      "format": "SPDX",
+      "decision": "pass",
+      "reasons": [
+        "sha256_present",
+        "provenance_present",
+        "policy_decision_accepted"
+      ]
+    },
+    {
+      "artifact": "stage238_slsa_build_provenance",
+      "source_stage": 238,
+      "artifact_type": "slsa_provenance",
+      "format": "SLSA-Provenance",
+      "decision": "pass",
+      "reasons": [
+        "sha256_present",
+        "signature_present",
+        "provenance_present",
+        "policy_decision_accepted"
+      ]
+    },
+    {
+      "artifact": "stage239_policy_gate",
+      "source_stage": 239,
+      "artifact_type": "policy_gate",
+      "format": "Policy-JSON",
+      "decision": "pass",
+      "reasons": [
+        "sha256_present",
+        "policy_decision_accepted"
+      ]
+    },
+    {
+      "artifact": "stage240_external_verification_gate",
+      "source_stage": 240,
+      "artifact_type": "artifact_attestation",
+      "format": "GitHub-Attestation",
+      "decision": "pass",
+      "reasons": [
+        "sha256_present",
+        "signature_present",
+        "provenance_present",
+        "policy_decision_accepted"
+      ]
+    },
+    {
+      "artifact": "stage273_ed25519_review_evidence",
+      "source_stage": 273,
+      "artifact_type": "ed25519_review_evidence",
+      "format": "Ed25519",
+      "decision": "pass",
+      "reasons": [
+        "sha256_present",
+        "signature_present",
+        "policy_decision_accepted"
+      ]
+    }
+  ],
+  "reasons": [
+    "slsa_sbom_schema_checked",
+    "spdx_or_cyclonedx_format_checked",
+    "provenance_presence_checked",
+    "sha256_presence_checked",
+    "signature_presence_checked",
+    "policy_decision_checked",
+    "unknown_is_fail_closed"
+  ],
+  "safety_boundary": {
+    "safe_metadata_only": true,
+    "no_private_keys": true,
+    "no_raw_secrets": true,
+    "no_exploit_code": true,
+    "no_production_artifacts_published": true
+  },
+  "created_at": "2026-06-12T09:07:11.374710+00:00"
+}

@@ -1,0 +1,56 @@
+{
+  "stage": 347,
+  "source_stage": 346,
+  "engine": "Quantum-Safe Behavior Template Layer",
+  "overall_decision": "pass",
+  "artifact_decisions": [
+    {
+      "artifact": "pqc_session_metadata.json",
+      "domain": "PQC",
+      "decision": "pass",
+      "reasons": [
+        "approved_pqc_algorithm_name_detected",
+        "pqc_metadata_present",
+        "evidence_hash_bound"
+      ]
+    },
+    {
+      "artifact": "pqc_signature_metadata.json",
+      "domain": "PQC",
+      "decision": "pass",
+      "reasons": [
+        "approved_pqc_algorithm_name_detected",
+        "pqc_metadata_present",
+        "evidence_hash_bound"
+      ]
+    },
+    {
+      "artifact": "qkd_session_metadata.json",
+      "domain": "QKD",
+      "decision": "pass",
+      "reasons": [
+        "qkd_safe_metadata_present",
+        "qkd_device_limitation_disclosed"
+      ]
+    },
+    {
+      "artifact": "qkd_failover_metadata.json",
+      "domain": "QKD",
+      "decision": "pass",
+      "reasons": [
+        "qkd_safe_metadata_present",
+        "qkd_fallback_mode_disclosed"
+      ]
+    }
+  ],
+  "template_sha256": "ff39c6a6f00e8cec556572a008dd0a9855b05eaadad175a46d5c34d0c41a65d8",
+  "input_sha256": "530558facc43ecae861726fd3aee212f2b8283a578bd610049da87dead3b1458",
+  "safety_boundary": {
+    "safe_metadata_only": true,
+    "no_private_keys": true,
+    "no_raw_qkd_key_material": true,
+    "no_exploit_code": true,
+    "no_real_crypto_backend_published": true
+  },
+  "created_at": "2026-06-12T02:06:42.997339+00:00"
+}

@@ -1,0 +1,15 @@
+Stage343 Verified External Anchor Layer
+
+Decision: accept
+
+Checks:
+- hash_binding: OK
+- checkpoint_witness: OK
+- ed25519_witness: OK
+- gpg: OK
+- sigstore: OK
+- open_timestamps: NOT OK
+- github_actions_anchor_intent: OK
+
+Meaning:
+Stage343 verifies the Stage342 external anchor layer and generates an independent verification report.

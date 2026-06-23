@@ -1,0 +1,66 @@
+name: Stage342 External Anchor
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "docs/session/session_manifest.json"
+      - "docs/session/signed_session_manifest.json"
+      - "docs/anchors/external_anchor_receipt.json"
+
+permissions:
+  contents: read
+
+jobs:
+  anchor:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build GitHub Actions anchor receipt
+        run: |
+          mkdir -p out/anchors
+          python3 - <<'PY'
+          import json
+          import hashlib
+          import os
+          from pathlib import Path
+          from datetime import datetime, timezone
+
+          manifest = Path("docs/session/session_manifest.json")
+          signed = Path("docs/session/signed_session_manifest.json")
+
+          def sha256_file(path):
+              return hashlib.sha256(path.read_bytes()).hexdigest()
+
+          receipt = {
+              "stage": 342,
+              "type": "github_actions_anchor_receipt",
+              "repository": os.environ.get("GITHUB_REPOSITORY"),
+              "run_id": os.environ.get("GITHUB_RUN_ID"),
+              "run_number": os.environ.get("GITHUB_RUN_NUMBER"),
+              "workflow": os.environ.get("GITHUB_WORKFLOW"),
+              "ref": os.environ.get("GITHUB_REF"),
+              "sha": os.environ.get("GITHUB_SHA"),
+              "anchored_artifact": "docs/session/session_manifest.json",
+              "session_manifest_sha256": sha256_file(manifest),
+              "signed_session_manifest_sha256": sha256_file(signed),
+              "created_at": datetime.now(timezone.utc).isoformat(),
+              "meaning": "This receipt anchors the signed verification session manifest to a GitHub Actions run."
+          }
+
+          Path("out/anchors/github_actions_anchor_receipt.json").write_text(
+              json.dumps(receipt, ensure_ascii=False, indent=2),
+              encoding="utf-8"
+          )
+          PY
+
+      - name: Upload anchor artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: stage342-external-anchor-artifacts
+          path: out/anchors/github_actions_anchor_receipt.json

@@ -1,0 +1,25 @@
+name: Stage352 Signature Manifest Verification
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  verify-signature-manifest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify Stage351 signature manifest
+        run: |
+          python3 scripts/stage352_verify_signature_manifest.py
+
+      - name: Upload Stage352 verification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stage352-signature-manifest-verification
+          path: docs/signatures/stage352_signature_manifest_verification.json

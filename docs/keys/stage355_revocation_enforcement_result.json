@@ -1,0 +1,33 @@
+{
+  "stage": 355,
+  "engine": "Signature Key Status Verification & Revocation Enforcement Layer",
+  "source_stage": 354,
+  "created_at": "2026-06-23T00:38:09Z",
+  "decision": "accept_verification_ready",
+  "checks": {
+    "stage354_ledger_exists": true,
+    "stage354_result_exists": true,
+    "stage354_decision_acceptable": true,
+    "stage354_ledger_chain_valid": true,
+    "key_records_present": true,
+    "no_private_keys_published": true,
+    "no_pqc_intent_claimed_as_active": true,
+    "no_revoked_key_claimed_active": true,
+    "no_expired_key_claimed_active": true,
+    "signing_time_validity_checked": true,
+    "previous_hash_bound_to_stage354_entry_hash": true
+  },
+  "reasons": [
+    "stage354_key_ledger_loaded",
+    "stage354_entry_hash_bound_as_previous_hash",
+    "key_status_records_checked",
+    "revoked_key_active_claim_not_detected",
+    "pqc_ml_dsa_remains_intent_only",
+    "no_private_keys_published",
+    "fail_closed_rules_initialized"
+  ],
+  "violations": [],
+  "previous_hash": "06596d80b22dac854d674f5820d8ead42f040204c9a3c26e5c853e9d4227c38f",
+  "entry_hash": "cd30facf64978d7aecff0285ea092847049da0e55d7b8cb8d6b7bdcc323545a7",
+  "result_sha256": "6b2227842ddd19779cca27dfe81c86518ffca88a12cbc70c11ac904a64a7aa5a"
+}

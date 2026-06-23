@@ -1,0 +1,75 @@
+{
+  "stage": 347,
+  "engine": "Quantum-Safe Behavior Template Layer",
+  "source_stage": 346,
+  "domains": ["PQC", "QKD"],
+  "templates": [
+    {
+      "template_id": "PQC-TEMPLATE-001",
+      "domain": "PQC",
+      "target": "ML-KEM behavior",
+      "expected_behavior": [
+        "algorithm family is identified",
+        "key establishment metadata is recorded",
+        "no private key is published",
+        "verification evidence is hash-bound"
+      ],
+      "decision": "pass / fail / unknown"
+    },
+    {
+      "template_id": "PQC-TEMPLATE-002",
+      "domain": "PQC",
+      "target": "ML-DSA behavior",
+      "expected_behavior": [
+        "signature algorithm family is identified",
+        "signature verification metadata is recorded",
+        "no signing private key is published",
+        "verification evidence is hash-bound"
+      ],
+      "decision": "pass / fail / unknown"
+    },
+    {
+      "template_id": "PQC-TEMPLATE-003",
+      "domain": "PQC",
+      "target": "SLH-DSA behavior",
+      "expected_behavior": [
+        "hash-based signature family is identified",
+        "signature verification metadata is recorded",
+        "no signing private key is published",
+        "verification evidence is hash-bound"
+      ],
+      "decision": "pass / fail / unknown"
+    },
+    {
+      "template_id": "QKD-TEMPLATE-001",
+      "domain": "QKD",
+      "target": "QKD key-session behavior",
+      "expected_behavior": [
+        "key session metadata is recorded",
+        "QBER or safety threshold metadata is present",
+        "raw key material is not published",
+        "trusted-node or device limitation is disclosed"
+      ],
+      "decision": "pass / fail / unknown"
+    },
+    {
+      "template_id": "QKD-TEMPLATE-002",
+      "domain": "QKD",
+      "target": "QKD failover behavior",
+      "expected_behavior": [
+        "failover event metadata is recorded",
+        "PQC or classical fallback mode is disclosed",
+        "raw key material is not published",
+        "QKD is not described as absolute security"
+      ],
+      "decision": "pass / fail / unknown"
+    }
+  ],
+  "safety_boundary": {
+    "safe_metadata_only": true,
+    "no_private_keys": true,
+    "no_raw_qkd_key_material": true,
+    "no_exploit_code": true,
+    "no_real_crypto_backend_published": true
+  }
+}

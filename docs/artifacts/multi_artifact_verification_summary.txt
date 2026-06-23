@@ -1,0 +1,14 @@
+Stage346 Multi-Artifact Verification Layer
+
+Decision: accept
+
+Checks:
+- stage343_accept: OK
+- stage344_ready: OK
+- stage345_accept: OK
+- all_required_artifacts_exist: OK
+- all_required_sha_match: OK
+- downloaded_artifact_present: OK
+
+Meaning:
+Stage346 verifies multiple public verification artifacts as one connected evidence set.

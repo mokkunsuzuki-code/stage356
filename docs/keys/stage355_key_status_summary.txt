@@ -1,0 +1,32 @@
+Stage355 Signature Key Status Verification & Revocation Enforcement Layer
+
+Decision:
+accept_verification_ready
+
+What Stage355 adds:
+- Reads Stage354 key rotation ledger
+- Verifies key status records
+- Checks revoked / expired / superseded / intent_only safety
+- Prevents PQC ML-DSA intent_only from being treated as an active signature
+- Binds Stage354 entry_hash as Stage355 previous_hash
+- Creates a new Stage355 entry_hash
+- Initializes fail-closed revocation enforcement rules
+
+Previous hash from Stage354:
+06596d80b22dac854d674f5820d8ead42f040204c9a3c26e5c853e9d4227c38f
+
+Stage355 entry hash:
+cd30facf64978d7aecff0285ea092847049da0e55d7b8cb8d6b7bdcc323545a7
+
+Status verification file:
+docs/keys/stage355_key_status_verification.json
+
+Revocation enforcement result:
+docs/keys/stage355_revocation_enforcement_result.json
+
+Safety boundary:
+- No private keys
+- No raw secrets
+- No real key rotation claim
+- No real Rekor claim
+- No real PQC signature claim

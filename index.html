@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="ja" translate="no">
+<head>
+  <meta charset="utf-8">
+  <meta name="google" content="notranslate">
+  <title>REMEDA Stage335 - Execution Integrity + Evidence Hash Auto Builder</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; background: #f6f8fa; color: #24292f; }
+    header { background: #0d1117; color: white; padding: 44px 32px; }
+    main { max-width: 1120px; margin: 28px auto; padding: 0 20px; }
+    .card { background: white; border: 1px solid #d0d7de; border-radius: 16px; padding: 24px; margin-bottom: 20px; box-shadow: 0 8px 24px rgba(140,149,159,.14); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
+    label { display: block; font-weight: 700; margin-top: 12px; }
+    input, select, textarea { width: 100%; box-sizing: border-box; padding: 10px; border: 1px solid #d0d7de; border-radius: 10px; margin-top: 6px; font-family: inherit; }
+    textarea { min-height: 130px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    button, a.button { display: inline-block; margin: 8px 8px 0 0; padding: 12px 16px; border-radius: 10px; background: #0969da; color: white; border: none; text-decoration: none; font-weight: 700; cursor: pointer; }
+    .secondary { background: #57606a !important; }
+    .green { background: #1a7f37 !important; }
+    pre { background: #0d1117; color: #c9d1d9; padding: 16px; border-radius: 12px; overflow-x: auto; white-space: pre-wrap; }
+    .accept { background: #dafbe1; color: #116329; border: 1px solid #4ac26b; }
+    .pending { background: #fff8c5; color: #7d4e00; border: 1px solid #d4a72c; }
+    .reject { background: #ffebe9; color: #82071e; border: 1px solid #ff8182; }
+    .badge { display: inline-block; padding: 6px 12px; border-radius: 999px; background: #dafbe1; color: #116329; font-weight: 700; }
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 6px; }
+  </style>
+</head>
+<body>
+<header>
+  <h1>REMEDA Stage335</h1>
+  <p>Stage329 Audit Submission Package + Stage330 Evidence Hash Auto Builder + Stage331 Execution Integrity + Stage332 Signed Execution Session + Stage333 Transparency Log + Stage334 AI Vulnerability Watch Atlas + Stage335 Safe AI Vulnerability Intelligence Fetcher</p>
+  <span class="badge">Stage329の監査提出機能、
+Stage330のSHA256自動生成、
+Stage331のExecution Integrityを継承し、
+
+Stage332では
+Execution Session に
+GPG / Sigstore 署名を追加します。
+
+これにより、
+実行証拠は署名付き監査証拠となり、
+第三者検証可能になります。</span>
+</header>
+
+<main>
+  <section class="card">
+    <h2>Overview</h2>
+    <p>
+      Stage330 does not replace Stage329.
+      It extends the Stage329 audit submission package by adding automatic SHA256 evidence hash generation.
+    </p>
+    <pre>AI主張
+↓
+再現証拠
+↓
+Stage328 Evidence Match Gate
+↓
+受け入れ / 保留 / reject
+↓
+Stage329 Signed Audit Report</pre>
+  </section>
+
+  <section class="card">
+    <h2>Stage327 + Stage328 Integrated Builder</h2>
+    <p>
+      Input AI vulnerability claims and reproduction evidence, generate structured Stage327 JSON,
+      and perform Stage328 gate verification.
+    </p>
+  </section>
+
+  <section class="grid">
+    <div class="card">
+      <h2>AI脆弱性主張</h2>
+
+      <label>脆弱性タイプ</label>
+      <select id="vulnerability_type">
+        <option>プロンプトインジェクション</option>
+        <option>data-leakage</option>
+        <option>unsafe-output</option>
+        <option>policy-bypass</option>
+      </select>
+
+      <label>Target</label>
+      <select id="target">
+        <option>モデル出力</option>
+        <option>repository</option>
+        <option>api-response</option>
+      </select>
+
+      <label>AI主張 ID</label>
+      <input id="ai_claim_id" value="claim-001">
+
+      <label>Repository</label>
+      <input id="claim_repository" value="demo/repository">
+
+      <label>Commit</label>
+      <input id="claim_commit" value="abc123demo">
+
+      <label>File</label>
+      <input id="claim_file" value="src/auth.py">
+
+      <label>Line Range</label>
+      <input id="claim_line_range" value="40-55">
+
+      <label>Claim Summary</label>
+      <textarea id="claim_summary">AI detected a possible prompt injection issue.</textarea>
+    </div>
+
+    <div class="card">
+      <h2>再現証拠</h2>
+
+      <label>再現ID</label>
+      <input id="reproduction_id" value="repro-001">
+
+      <label>再現リポジトリ</label>
+      <input id="repro_repository" value="demo/repository">
+
+      <label>再現コミット</label>
+      <input id="repro_commit" value="abc123demo">
+
+      <label>再現ファイル</label>
+      <input id="repro_file" value="src/auth.py">
+
+      <label>再現ライン範囲</label>
+      <input id="repro_line_range" value="40-55">
+
+      <label>Result</label>
+      <select id="result_status">
+        <option>再現済み</option>
+        <option>partial</option>
+        <option>inconclusive</option>
+      </select>
+
+      <label>再現メモ</label>
+      <textarea id="reproduction_note">隔離環境で安全に再現確認しました。</textarea>
+
+      <label>Evidence Files</label>
+      <textarea id="evidence_files">prompt.txt
+response.txt
+run.log</textarea>
+
+      <label>SHA256 Map</label>
+      <textarea id="sha256_map" translate="no" class="notranslate">{
+  "prompt.txt": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "response.txt": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "run.log": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+}</textarea>
+
+      <label>Signature File</label>
+      <input id="signature_file" value="reproduction.log.asc">
+    </div>
+  </section>
+
+  <section class="card">
+    <button onclick="generateStage328()">Generate Stage328 JSON + Gate Decision</button>
+    <button class="secondary" onclick="downloadStage328Decision()">Download stage328_decision.json</button>
+    <a class="button green" href="./reports/audit_report.html">Open Stage329 Audit Report</a>
+
+    <h2>生成されたStage328 JSON</h2>
+    <pre id="generated_json" translate="no" class="notranslate">Generated JSON appears here.</pre>
+
+    <h2>Stage328 Gate判定</h2>
+    <div id="decision_box" class="card pending">Gate decision appears here.</div>
+    <pre id="gate_decision" translate="no" class="notranslate">{}</pre>
+  </section>
+
+  <section class="card">
+    <h2>Stage329監査提出レイヤー</h2>
+    <p>
+      After generating the Stage328 decision, Stage329 converts it into an audit package:
+      JSON, HTML, signature, hash, and verification instructions.
+    </p>
+    <a class="button" href="./reports/audit_report.html">Stage329 Audit Report</a>
+    <a class="button" href="./reports/audit_report.json">Audit JSON</a>
+    <a class="button" href="./reports/audit_report.json.asc">Audit Signature</a>
+    <a class="button" href="./reports/verify.txt">Verify Instructions</a>
+  </section>
+
+  <section class="card">
+    <h2>判定ルール</h2>
+    <p><strong>受け入れ:</strong> all checks are true</p>
+    <p><strong>保留:</strong> target/evidence exist but SHA256 or signature missing</p>
+    <p><strong>reject:</strong> target mismatch or evidence missing</p>
+  </section>
+
+  <section class="card">
+    <h2>公開検証ファイル</h2>
+    <a class="button secondary" href="./ja/">Japanese Page</a>
+    
+<a class="button secondary" href="./en/">English Page</a>
+
+    <a class="button secondary" href="./schema/vulnerability-evidence-intake.schema.json">Schema JSON</a>
+    <a class="button secondary" href="./examples/demo-intake.json">Example JSON</a>
+    <a class="button secondary" href="./proof/demo-ai-vulnerability.html">Proof Viewer</a>
+    <a class="button secondary" href="./report/report.html">Stage328 Audit Report</a>
+    <a class="button secondary" href="./history/history.json">Audit History JSON</a>
+    <a class="button secondary" href="./verify/third-party-verify.txt">Third-Party Verification Guide</a>
+  </section>
+
+<section class="card" id="stage330-hash-auto-builder">
+  <h2>Stage330 Evidence Hash Auto Builder</h2>
+
+  <p>
+    Stage330 adds automatic SHA256 hash generation to the Stage329 audit submission workflow.
+    It reads evidence files, generates a SHA256 map, creates hash_manifest.json, and prepares
+    reproduction_evidence.json for the Stage328 Evidence Match Gate.
+  </p>
+
+  <pre>
+prompt.txt
+response.txt
+run.log
+↓
+Automatic SHA256 Generation
+↓
+hash_manifest.json
+↓
+hash_manifest.sha256
+↓
+reproduction_evidence.json
+↓
+Stage328 Evidence Match Gate
+↓
+Stage329 Audit Submission Package
+  </pre>
+
+  <h3>Generated Stage330 Files</h3>
+  <ul>
+    <li><a href="evidence/hash_manifest.json">docs/evidence/hash_manifest.json</a></li>
+    <li><a href="evidence/hash_manifest.sha256">docs/evidence/hash_manifest.sha256</a></li>
+    <li><a href="evidence/reproduction_evidence.json">docs/evidence/reproduction_evidence.json</a></li>
+</ul>
+
+<h3>Stage331 Execution Integrity</h3>
+
+<p>
+Stage331 extends Stage330 by binding evidence files into a single execution session.
+</p>
+
+<pre>
+prompt.txt
+response.txt
+run.log
+↓
+Execution Session Binding
+↓
+session_id
+created_at
+evidence_order
+evidence_count
+sha256_map
+↓
+execution_session.json
+↓
+Execution Integrity Verification
+</pre>
+
+<p>
+Stage331 verifies not only file integrity, but whether the evidence files belong to the same execution session.
+</p>
+
+<ul>
+  <li><a href="report/execution_session.json">docs/report/execution_session.json</a></li>
+</ul>
+
+</section>
+
+    <li><a href="report/audit_report.json">docs/report/audit_report.json</a></li>
+    <li><a href="report/audit_report.html">docs/report/audit_report.html</a></li>
+  </ul>
+
+  <h3>What Stage330 Adds</h3>
+  <table>
+    <tr>
+      <th>Before Stage330</th>
+      <th>After Stage330</th>
+    </tr>
+    <tr>
+      <td>SHA256 map was manually written</td>
+      <td>SHA256 map is automatically generated</td>
+    </tr>
+    <tr>
+      <td>Risk of copy mistakes</td>
+      <td>Lower risk of human error</td>
+    </tr>
+    <tr>
+      <td>Audit package starts after hashes exist</td>
+      <td>Audit package includes the hash generation layer</td>
+    </tr>
+  </table>
+</section>
+
+</main>
+
+<script>
+let lastStage328Decision = null;
+
+function linesToArray(text) {
+  return text.split("\n").map(x => x.trim()).filter(Boolean);
+}
+
+function sameTarget(claim, evidence) {
+  return claim.repository === evidence.repository &&
+    claim.commit === evidence.commit &&
+    claim.file === evidence.file &&
+    claim.line_range === evidence.line_range;
+}
+
+function generateStage328() {
+  const claim = {
+    ai_claim_id: document.getElementById("ai_claim_id").value,
+    vulnerability_type: document.getElementById("vulnerability_type").value,
+    target: document.getElementById("target").value,
+    repository: document.getElementById("claim_repository").value,
+    commit: document.getElementById("claim_commit").value,
+    file: document.getElementById("claim_file").value,
+    line_range: document.getElementById("claim_line_range").value,
+    summary: document.getElementById("claim_summary").value
+  };
+
+  let sha256Map = {};
+  try {
+    sha256Map = JSON.parse(document.getElementById("sha256_map").value);
+  } catch (e) {
+    alert("SHA256 Map must be valid JSON.");
+    return;
+  }
+
+  const evidence = {
+    reproduction_id: document.getElementById("reproduction_id").value,
+    repository: document.getElementById("repro_repository").value,
+    commit: document.getElementById("repro_commit").value,
+    file: document.getElementById("repro_file").value,
+    line_range: document.getElementById("repro_line_range").value,
+    result: document.getElementById("result_status").value,
+    note: document.getElementById("reproduction_note").value,
+    evidence_files: linesToArray(document.getElementById("evidence_files").value),
+    sha256: sha256Map,
+    signature_file: document.getElementById("signature_file").value
+  };
+
+  const same_target = sameTarget(claim, evidence);
+  const evidence_files_present = evidence.evidence_files.length > 0;
+  const sha256_bound = evidence.evidence_files.every(f => Boolean(evidence.sha256[f]));
+  const signature_present = Boolean(evidence.signature_file);
+
+  let decision = "reject";
+  if (same_target && evidence_files_present && sha256_bound && signature_present) {
+    decision = "accept";
+  } else if (same_target && evidence_files_present) {
+    decision = "pending";
+  }
+
+  const stage328 = {
+    stage: 328,
+    engine: "QSP Evidence Match Gate",
+    purpose: "Trust decision between AI claim and reproduction evidence.",
+    ai_claim: claim,
+    reproduction_evidence: evidence,
+    checks: {
+      same_target,
+      evidence_files_present,
+      sha256_bound,
+      signature_present
+    },
+    decision,
+    note: "This gate verifies evidence binding. It does not reproduce vulnerabilities."
+  };
+
+  lastStage328Decision = stage328;
+
+  document.getElementById("generated_json").textContent = JSON.stringify(stage328, null, 2);
+  document.getElementById("gate_decision").textContent = JSON.stringify({
+    decision,
+    checks: stage328.checks
+  }, null, 2);
+
+  const box = document.getElementById("decision_box");
+  box.className = "card " + decision;
+  
+const labelMap = { accept: "accept", pending: "pending", reject: "reject" };
+box.textContent = "Decision: " + (labelMap[decision] || decision);
+
+}
+
+function downloadStage328Decision() {
+  if (!lastStage328Decision) generateStage328();
+  const blob = new Blob([JSON.stringify(lastStage328Decision, null, 2) + "\n"], {type: "application/json"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "stage328_decision.json";
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+generateStage328();
+</script>
+
+
+</body>
+</html>
+
+<section>
+  <h2>Stage332: Signed Execution Session</h2>
+  <p>
+    Stage332 extends Stage331 by cryptographically signing the execution session.
+    The audit target is <code>execution_session.json</code>.
+  </p>
+  <p>
+    The execution session becomes signed audit evidence through GPG signature,
+    Sigstore bundle, and public verification.
+  </p>
+  <p>
+    This stage proves who generated the execution evidence, whether the evidence
+    was modified, and whether the execution session can be independently verified.
+  </p>
+  <ul>
+    <li><a href="./execution/execution_session.json">execution_session.json</a></li>
+    <li><a href="./execution/execution_session.json.sig">GPG signature</a></li>
+    <li><a href="./execution/execution_session.json.bundle">Sigstore bundle</a></li>
+    <li><a href="./execution/public-key.asc">Public key</a></li>
+  </ul>
+  <p>
+    Meaning: this proves who generated the execution session and turns execution evidence into signed audit evidence.
+
+<section style="margin-top:40px; padding:24px; border:2px solid #222; border-radius:16px;">
+  <h2>Stage333 Transparency Log</h2>
+  <p>Stage333 extends Stage332 by recording the signed execution session into an append-only transparency log.</p>
+
+  <h3>Stage332 → Stage333</h3>
+  <pre>execution_session.json
+↓
+GPG / Sigstore signature
+↓
+transparency-log.json
+↓
+previous_hash chain
+↓
+public audit timeline</pre>
+
+  <h3>Latest Transparency Log Entry</h3>
+  <pre id="stage333-log">Loading transparency log...</pre>
+
+  <p><a href="./audit/timeline.html">View Transparency Timeline</a></p>
+  <p><a href="./audit/transparency-log.json">View Transparency Log JSON</a></p>
+  <p><a href="./audit/verify-transparency-log.txt">Verification Instructions</a></p>
+</section>
+
+<script>
+fetch("./audit/transparency-log.json")
+  .then(r => r.json())
+  .then(log => {
+    const latest = log[log.length - 1];
+    document.getElementById("stage333-log").textContent = JSON.stringify(latest, null, 2);
+  })
+  .catch(() => {
+    document.getElementById("stage333-log").textContent = "Transparency log could not be loaded.";
+  });
+</script>
+
+<section style="margin-top:40px; padding:24px; border:2px solid #1f2937; border-radius:16px;">
+  <h2>Stage334 AI Vulnerability Watch Atlas + Stage335 Safe AI Vulnerability Intelligence Fetcher</h2>
+  <p>
+    Stage334 extends Stage333 by adding a safe AI vulnerability watch system.
+    It organizes AI failure patterns from security sources into a public audit atlas.
+  </p>
+
+  <h3>Stage333 → Stage334</h3>
+  <pre>Stage333 Transparency Log
+↓
+signed evidence history
+↓
+AI vulnerability source watch
+↓
+AI vulnerability atlas
+↓
+safe reproduction planning</pre>
+
+  <h3>Safety Boundary</h3>
+  <ul>
+    <li>No exploit code is published.</li>
+    <li>No harmful prompt payloads are published.</li>
+    <li>No attack automation is published.</li>
+    <li>Only safe audit metadata is public.</li>
+    <li>Collection logic stays private.</li>
+  </ul>
+
+  <h3>Latest Watch Summary</h3>
+  <pre id="stage334-summary">Loading Stage334 watch summary...</pre>
+
+  <p><a href="./intelligence/index.html">View Stage334 Intelligence Page</a></p>
+  <p><a href="./intelligence/ai-vulnerability-atlas.json">View AI Vulnerability Atlas JSON</a></p>
+  <p><a href="./intelligence/watch-summary.json">View Watch Summary JSON</a></p>
+</section>
+
+<script>
+fetch("./intelligence/watch-summary.json")
+  .then(r => r.json())
+  .then(data => {
+    document.getElementById("stage334-summary").textContent = JSON.stringify(data, null, 2);
+  })
+  .catch(() => {
+    document.getElementById("stage334-summary").textContent = "Stage334 summary could not be loaded.";
+  });
+</script>
+
+<section style="margin-top:40px; padding:24px; border:2px solid #111827; border-radius:16px;">
+  <h2>Stage335 Safe AI Vulnerability Intelligence Fetcher</h2>
+  <p>
+    Stage335 extends Stage334 by collecting safe AI vulnerability intelligence metadata.
+    Dangerous prompts, exploit code, weaponized payloads, and attack automation are not published.
+  </p>
+
+  <h3>Stage334 → Stage335</h3>
+  <pre>Stage334 AI Vulnerability Watch Atlas
+↓
+safe AI risk categories
+↓
+Stage335 Safe Metadata Fetcher
+↓
+safe intelligence feed
+↓
+collection transparency log
+↓
+private internal Runner preparation</pre>
+
+  <h3>Public / Private Separation</h3>
+  <ul>
+    <li><strong>Public:</strong> metadata, classification, summary, SHA256, transparency log.</li>
+    <li><strong>Private:</strong> reproduction templates, behavior matching, runner logic, unsafe details.</li>
+  </ul>
+
+  <h3>Latest Stage335 Summary</h3>
+  <pre id="stage335-summary">Loading Stage335 summary...</pre>
+
+  <p><a href="./docs/stage335/index.html">View Stage335 Page</a></p>
+  <p><a href="./docs/stage335/safe-intelligence-feed.json">View Safe Intelligence Feed</a></p>
+  <p><a href="./docs/stage335/collection-transparency-log.json">View Collection Transparency Log</a></p>
+</section>
+
+<script>
+fetch("./docs/stage335/watch-summary.json")
+  .then(r => r.json())
+  .then(data => {
+    document.getElementById("stage335-summary").textContent = JSON.stringify(data, null, 2);
+  })
+  .catch(() => {
+    document.getElementById("stage335-summary").textContent = "Stage335 summary could not be loaded.";
+  });
+</script>
+
+
+
+
+
+
+  </p>
+</section>

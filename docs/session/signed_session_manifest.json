@@ -1,0 +1,13 @@
+{
+  "stage": 341,
+  "type": "signed_verification_session_manifest",
+  "engine": "Signed Verification Session Manifest",
+  "source_manifest": "docs/session/session_manifest.json",
+  "source_manifest_sha256": "0c8048d70faf08816e0829e1b50727ef82a3d7d94fe19d8c8e5b692ed6121be3",
+  "signature_manifest": "docs/session/session_signature_manifest.json",
+  "signature_manifest_sha256": "7680e2105ace506b4472e040edb79657f05a31ed146774f3505483523ad8965b",
+  "gpg_signature_present": true,
+  "ed25519_witness_signature_present": true,
+  "sigstore_bundle_present": true,
+  "created_at": "2026-06-05T11:13:31.982964+00:00"
+}

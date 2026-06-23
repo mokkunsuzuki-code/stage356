@@ -1,0 +1,98 @@
+{
+  "stage": 343,
+  "engine": "Verified External Anchor Layer",
+  "source_stage": 342,
+  "decision": "accept",
+  "anchored_artifact": "docs/session/session_manifest.json",
+  "checks": {
+    "hash_binding": {
+      "ok": true,
+      "status": "hash_binding_verified",
+      "session_manifest": {
+        "expected": "0c8048d70faf08816e0829e1b50727ef82a3d7d94fe19d8c8e5b692ed6121be3",
+        "actual": "0c8048d70faf08816e0829e1b50727ef82a3d7d94fe19d8c8e5b692ed6121be3",
+        "match": true
+      },
+      "signed_session_manifest": {
+        "expected": "1ef840e0fbd9013dde9319b860b8914f2f8f242e3645be23730b9bc62e41dfed",
+        "actual": "1ef840e0fbd9013dde9319b860b8914f2f8f242e3645be23730b9bc62e41dfed",
+        "match": true
+      }
+    },
+    "checkpoint_witness": {
+      "ok": true,
+      "stdout": "Good \"stage342-checkpoint-witness\" signature for stage342-checkpoint-witness with ED25519 key SHA256:vWm6T1Cut2U1Nkfhd4mkc9BAc5HV36Dj2KdlqKi2cUI",
+      "stderr": "",
+      "command": "ssh-keygen -Y verify -f docs/checkpoints/checkpoint_allowed_signers -I stage342-checkpoint-witness -n stage342-checkpoint-witness -s docs/checkpoints/session_manifest.checkpoint.sig"
+    },
+    "ed25519_witness": {
+      "ok": true,
+      "stdout": "Good \"stage341-session-manifest\" signature for stage341-ed25519-witness with ED25519 key SHA256:eqn9Y+o/1HDzpNdMqZRNQmk1kcb0c4K3DNSoEPUG0dA",
+      "stderr": "",
+      "command": "ssh-keygen -Y verify -f docs/witnesses/allowed_signers -I stage341-ed25519-witness -n stage341-session-manifest -s docs/witnesses/session_manifest.ed25519.sig"
+    },
+    "gpg": {
+      "ok": true,
+      "stdout": "",
+      "stderr": "gpg: Signature made Fri Jun  5 20:13:32 2026 JST\ngpg:                using RSA key CAAFD14976A6AEF6771A8C134D091472330F6B95\ngpg: Good signature from \"Motohiro Suzuki <mokkun.suzuki@gmail.com>\" [ultimate]",
+      "command": "gpg --verify docs/session/session_manifest.json.gpg.asc docs/session/session_manifest.json"
+    },
+    "sigstore": {
+      "ok": true,
+      "stdout": "",
+      "stderr": "Verified OK",
+      "command": "cosign verify-blob --bundle docs/anchors/session_manifest.sigstore.bundle --certificate-identity mokkun.suzuki@gmail.com --certificate-oidc-issuer https://github.com/login/oauth docs/session/session_manifest.json"
+    },
+    "open_timestamps": {
+      "ok": false,
+      "stdout": "",
+      "stderr": "Assuming target filename is 'docs/session/session_manifest.json'\nGot 1 attestation(s) from https://alice.btc.calendar.opentimestamps.org\nGot 1 attestation(s) from https://bob.btc.calendar.opentimestamps.org\nGot 1 attestation(s) from https://finney.calendar.eternitywall.com\nGot 1 attestation(s) from https://btc.calendar.catallaxy.com\nCould not connect to Bitcoin node: Cookie file unusable ([Errno 2] No such file or directory: '/Users/motohiro/Library/Application Support/Bitcoin/.cookie') and rpcpassword not specified in the configuration file: '/Users/motohiro/Library/Application Support/Bitcoin/bitcoin.conf'\n",
+      "error": "Command '['ots', 'verify', 'docs/session/session_manifest.json.ots']' returned non-zero exit status 1.",
+      "command": "ots verify docs/session/session_manifest.json.ots",
+      "note": "OTS verification can remain pending until calendar/blockchain confirmation."
+    },
+    "github_actions_anchor_intent": {
+      "ok": true,
+      "status": "github_actions_anchor_intent_verified",
+      "missing_fields": [],
+      "intent": {
+        "stage": 342,
+        "type": "github_actions_anchor_intent",
+        "workflow": ".github/workflows/stage342-external-anchor.yml",
+        "expected_artifact": "stage342-external-anchor-artifacts",
+        "anchored_artifact": "docs/session/session_manifest.json",
+        "artifact_sha256": "0c8048d70faf08816e0829e1b50727ef82a3d7d94fe19d8c8e5b692ed6121be3",
+        "status": "pending_until_github_actions_run",
+        "created_at": "2026-06-06T04:28:14.524443+00:00",
+        "meaning": "This records the intent to anchor the signed verification session manifest through GitHub Actions."
+      }
+    }
+  },
+  "ots_status": "pending_or_unavailable",
+  "reason": [
+    "hash_binding_verified",
+    "checkpoint_witness_verified",
+    "ed25519_witness_verified",
+    "gpg_verified",
+    "sigstore_verified",
+    "open_timestamps_failed",
+    "github_actions_anchor_intent_verified"
+  ],
+  "independent_verification": {
+    "hash_binding_verified": true,
+    "checkpoint_witness_verified": true,
+    "ed25519_witness_verified": true,
+    "gpg_verified": true,
+    "sigstore_verified": true,
+    "github_actions_anchor_intent_verified": true,
+    "open_timestamps_verified_or_pending": "pending_or_unavailable"
+  },
+  "safety_boundary": {
+    "private_keys_published": false,
+    "attack_code_published": false,
+    "dangerous_prompts_published": false,
+    "exploit_payloads_published": false,
+    "automated_attack_logic_published": false
+  },
+  "created_at": "2026-06-07T05:35:40.988585+00:00"
+}

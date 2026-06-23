@@ -1,0 +1,39 @@
+{
+  "stage": 339,
+  "policy_id": "unified-qsp-behavior-policy-action-gate-v1",
+  "engine": "Unified QSP Behavior Policy Action Gate",
+  "source_stages": [268, 269, 284, 299, 305, 306, 328, 338],
+  "trust_thresholds": {
+    "accept_min_total_trust": 0.8,
+    "pending_min_total_trust": 0.5
+  },
+  "behavior_mapping": {
+    "pass": "behavior_passed",
+    "fail": "behavior_failed",
+    "unknown": "behavior_unknown",
+    "error": "behavior_error"
+  },
+  "policy_rules": {
+    "fail_closed": true,
+    "unknown_behavior_action": "block",
+    "error_action": "block",
+    "require_same_target": true,
+    "require_evidence_files": true,
+    "require_sha256_bound": true,
+    "require_signature_present": true,
+    "require_signature_valid_for_accept": true,
+    "require_verification_ok_for_accept": true
+  },
+  "action_mapping": {
+    "accept": "allow",
+    "pending": "warn",
+    "reject": "block",
+    "error": "block"
+  },
+  "safety_boundary": {
+    "no_attack_code": true,
+    "no_dangerous_prompts": true,
+    "no_payloads": true,
+    "no_exploit_automation": true
+  }
+}

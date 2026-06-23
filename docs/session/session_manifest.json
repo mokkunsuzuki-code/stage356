@@ -1,0 +1,41 @@
+{
+  "stage": 340,
+  "type": "session_manifest",
+  "engine": "Unified Verification Session Manifest",
+  "session_id": "verification-session-74239f8d385143c285851878c2dedd78",
+  "source_stages": [
+    254,
+    331,
+    332,
+    333,
+    339
+  ],
+  "purpose": "Bind the Stage339 unified QSP behavior policy action result into a verifiable session manifest.",
+  "session_artifacts": {
+    "qsp_session_result": "docs/session/qsp_session_result.json",
+    "stage339_result": "docs/behavior/unified_qsp_behavior_policy_action_result.json"
+  },
+  "artifact_sha256": {
+    "qsp_session_result": "59d2f0e8c2dc340c51d9787d86be394fadda75a38ce7e8c2319fd7e500f07315",
+    "stage339_result": "3e80382cf69d7b9fac4d661ba25c22ecb017e6bf2434ca565e0bfe55a4dab1af"
+  },
+  "session_binding": {
+    "behavior_decision": "pass",
+    "policy_result": "accept",
+    "action": "allow",
+    "fail_closed": true,
+    "deterministic_same_input_same_output": true
+  },
+  "witness": {
+    "local_witness_file": "docs/witnesses/local_witness.json",
+    "witness_type": "sha256-local-witness",
+    "note": "This is a public hash witness, not a private cryptographic key."
+  },
+  "anchor": {
+    "anchor_receipt_file": "docs/anchors/session_anchor_receipt.json",
+    "anchor_type": "local-public-anchor-receipt",
+    "note": "External anchors such as OTS, Sigstore, or GitHub Actions can be added in later stages."
+  },
+  "created_at": "2026-06-04T05:29:16.161788+00:00",
+  "session_manifest_sha256": "fff69d7dfdf9e8fa93ce5e49def2b82e4b996b2b389d67df2917c09885a9485c"
+}

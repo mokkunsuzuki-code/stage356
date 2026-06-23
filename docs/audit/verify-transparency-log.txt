@@ -1,0 +1,12 @@
+Stage333 Transparency Log Verification
+
+1. Check execution session signature:
+   gpg --verify docs/execution_session.json.sig docs/execution_session.json
+
+2. Check transparency log hash chain locally:
+   python3 core/verify_transparency_log.py
+
+Meaning:
+Stage333 records each signed execution session into an append-only transparency history.
+Each entry contains the previous entry hash.
+If any past entry is modified, the chain verification fails.

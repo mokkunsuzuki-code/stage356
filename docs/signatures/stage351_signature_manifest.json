@@ -1,0 +1,77 @@
+{
+  "stage": 351,
+  "engine": "Hybrid PQC-Ready Context-Bound Enforcement Signature Manifest Layer",
+  "short_engine": "Hybrid Enforcement Signature Manifest Layer",
+  "source_stage": 350,
+  "created_at": "2026-06-15T06:33:05.481298+00:00",
+  "target": {
+    "path": "docs/enforcement/enforcement_session.json",
+    "session_sha256": "67c3e099658ec29646ce993d54466116b978739e501f518e579799ddad939cd9",
+    "stage350_decision": "warn",
+    "stage350_ci_environment": false,
+    "stage350_source_git_commit": "local-uncommitted"
+  },
+  "context_binding": {
+    "ci_environment": false,
+    "github_actions": {
+      "repository": null,
+      "workflow": null,
+      "run_id": null,
+      "run_attempt": null,
+      "sha": null,
+      "ref": null,
+      "actor": null
+    },
+    "local_execution": {
+      "allowed": true,
+      "signature_decision": "metadata_only",
+      "reason": "local execution cannot prove GitHub OIDC identity"
+    }
+  },
+  "signature_envelope": {
+    "gpg": {
+      "present": false,
+      "signature_path": null
+    },
+    "sigstore_oidc": {
+      "present": false,
+      "required_in_ci": true,
+      "bundle_path": null,
+      "oidc_identity_bound": false
+    },
+    "ed25519_witness": {
+      "present": false,
+      "signature_path": null,
+      "public_key_path": null
+    },
+    "pqc_ml_dsa": {
+      "present": false,
+      "algorithm": "ML-DSA",
+      "standard": "NIST FIPS 204",
+      "mode": "intent_only",
+      "private_key_published": false,
+      "public_key_path": null,
+      "signature_path": null
+    }
+  },
+  "hybrid_binding": {
+    "canonical_payload_sha256": "f82a2a48445b88eb8af36e5f690de5d320d765b4d7717cd5d69778a4a8d3db05",
+    "binding_rule": "Stage350 session hash, execution context, and signature envelope are canonically bound.",
+    "signature_manifest_sha256": "292e716d326aae0fc9874be1b177934c45561137d71787972d796fff2417ada1"
+  },
+  "decision": "pending",
+  "violations": [],
+  "reasons": [
+    "stage350_session_sha256_bound",
+    "ci_or_local_context_bound",
+    "sigstore_oidc_required_for_ci_acceptance",
+    "pqc_ml_dsa_recorded_as_intent_only",
+    "missing_signatures_are_not_claimed_as_present"
+  ],
+  "safety_boundary": {
+    "no_private_keys": true,
+    "no_raw_secrets": true,
+    "no_fake_signature_claim": true,
+    "no_unverified_pqc_claim": true
+  }
+}

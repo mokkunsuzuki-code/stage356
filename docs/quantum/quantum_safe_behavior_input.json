@@ -1,0 +1,39 @@
+{
+  "stage": 347,
+  "source_stage": 346,
+  "verification_target": "Stage87-198 PQC/QKD metadata bridge",
+  "artifact_set": [
+    {
+      "name": "pqc_session_metadata.json",
+      "domain": "PQC",
+      "algorithm": "ML-KEM",
+      "metadata_present": true,
+      "hash_bound": true,
+      "private_key_published": false
+    },
+    {
+      "name": "pqc_signature_metadata.json",
+      "domain": "PQC",
+      "algorithm": "ML-DSA",
+      "metadata_present": true,
+      "hash_bound": true,
+      "private_key_published": false
+    },
+    {
+      "name": "qkd_session_metadata.json",
+      "domain": "QKD",
+      "qber_metadata_present": true,
+      "raw_key_material_published": false,
+      "device_limitation_disclosed": true,
+      "absolute_security_claim": false
+    },
+    {
+      "name": "qkd_failover_metadata.json",
+      "domain": "QKD",
+      "failover_metadata_present": true,
+      "fallback_mode_disclosed": true,
+      "raw_key_material_published": false,
+      "absolute_security_claim": false
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "stage": 344,
+  "engine": "Verified GitHub Artifact Layer",
+  "source_stage": 343,
+  "decision": "pending",
+  "github_actions": {
+    "workflow": "Stage342 External Anchor",
+    "latest_run": null,
+    "run_list_check": {
+      "ok": false,
+      "stdout": "",
+      "stderr": "failed to determine base repo: failed to run git: fatal: not a git repository (or any of the parent directories): .git\n\n",
+      "error": "Command '['gh', 'run', 'list', '--workflow', 'Stage342 External Anchor', '--limit', '1', '--json', 'databaseId,status,conclusion,headSha,workflowName,url']' returned non-zero exit status 1.",
+      "command": "gh run list --workflow Stage342 External Anchor --limit 1 --json databaseId,status,conclusion,headSha,workflowName,url"
+    },
+    "github_run_success": false
+  },
+  "artifact_download": {
+    "status": "manual_download_required",
+    "command": "gh run download <RUN_ID> -n stage342-external-anchor-artifacts -D downloaded_stage344_github_artifact",
+    "note": "Stage344 records and verifies the GitHub Actions run. Artifact download verification can be performed after selecting a RUN_ID."
+  },
+  "hash_verification": {
+    "session_manifest_sha256": "0c8048d70faf08816e0829e1b50727ef82a3d7d94fe19d8c8e5b692ed6121be3",
+    "expected_from_external_anchor_receipt": "0c8048d70faf08816e0829e1b50727ef82a3d7d94fe19d8c8e5b692ed6121be3",
+    "match": true
+  },
+  "previous_independent_verification": {
+    "report": "docs/verification/independent_verification_report.json",
+    "decision": "accept",
+    "accept": true
+  },
+  "local_checks": {
+    "session_manifest_exists": true,
+    "external_anchor_receipt_exists": true,
+    "independent_report_exists": true
+  },
+  "safety_boundary": {
+    "private_keys_published": false,
+    "attack_code_published": false,
+    "dangerous_prompts_published": false,
+    "exploit_payloads_published": false,
+    "automated_attack_logic_published": false
+  },
+  "created_at": "2026-06-11T00:01:31.762040+00:00",
+  "meaning": "Stage344 verifies GitHub Actions run evidence and binds it to the Stage343 independent verification report."
+}

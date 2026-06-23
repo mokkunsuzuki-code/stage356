@@ -1,0 +1,10 @@
+Stage344 Verified GitHub Artifact Layer
+
+Decision: pending
+
+GitHub Actions run success: False
+Session manifest hash match: True
+Previous independent verification accept: True
+
+Meaning:
+Stage344 verifies GitHub Actions run evidence and prepares artifact download verification.

@@ -1,0 +1,29 @@
+{
+  "stage": 356,
+  "engine": "Runtime Verification & Fail-Closed Execution Gate",
+  "source_stage": 355,
+  "created_at": "2026-06-23T01:32:21Z",
+  "runtime_decision": "warn",
+  "previous_hash": "cd30facf64978d7aecff0285ea092847049da0e55d7b8cb8d6b7bdcc323545a7",
+  "entry_hash": "f420837afc3755c69b09528ef7e5c6cc5c4fbdb3b89e5bc5cfad2060eb4dcab6",
+  "checks": {
+    "stage355_result_exists": true,
+    "stage355_status_exists": true,
+    "stage355_decision_accept": true,
+    "stage355_violations_empty": true,
+    "stage355_result_sha256_present": true,
+    "stage355_entry_hash_present": true,
+    "stage355_entry_hash_matches_status_previous_binding": true,
+    "stage355_no_private_keys": true,
+    "stage355_no_real_pqc_signature_claim": true,
+    "stage355_pqc_intent_not_active": true,
+    "runtime_context_detected": true,
+    "ci_context_valid_if_required": true
+  },
+  "violations": [],
+  "reasons": [
+    "local_context_detected_warn_only",
+    "runtime_allowed_with_local_warning"
+  ],
+  "receipt_sha256": "39f95a4a0a4602d6a73a8062fdc9ae7aa5fffb67edb98f88c776ad6259916636"
+}

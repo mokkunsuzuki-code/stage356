@@ -1,0 +1,98 @@
+{
+  "stage": 346,
+  "engine": "Multi-Artifact Verification Layer",
+  "source_stage": 345,
+  "decision": "accept",
+  "artifacts": [
+    {
+      "name": "session_manifest",
+      "path": "docs/session/session_manifest.json",
+      "exists": true,
+      "sha256": "0c8048d70faf08816e0829e1b50727ef82a3d7d94fe19d8c8e5b692ed6121be3",
+      "expected_sha256": "0c8048d70faf08816e0829e1b50727ef82a3d7d94fe19d8c8e5b692ed6121be3",
+      "sha256_match": true
+    },
+    {
+      "name": "external_anchor_receipt",
+      "path": "docs/anchors/external_anchor_receipt.json",
+      "exists": true,
+      "sha256": "649f343684f801ece98b6daec43f200174a63dd08326a1839c358e0821644278",
+      "expected_sha256": null,
+      "sha256_match": true
+    },
+    {
+      "name": "stage343_independent_verification_report",
+      "path": "docs/verification/independent_verification_report.json",
+      "exists": true,
+      "sha256": "e66590a7ad3e645ca2f9542299d870fffd805bea6e0a854413678b65226feab6",
+      "expected_sha256": null,
+      "sha256_match": true
+    },
+    {
+      "name": "stage344_github_artifact_verification_report",
+      "path": "docs/artifacts/github_artifact_verification_report.json",
+      "exists": true,
+      "sha256": "f7f694345afcf4ab1a502590608892439e128f2fb459afc8c264f234249512aa",
+      "expected_sha256": null,
+      "sha256_match": true
+    },
+    {
+      "name": "stage345_artifact_download_verification_report",
+      "path": "docs/artifacts/artifact_download_verification_report.json",
+      "exists": true,
+      "sha256": "24ace89e4633f6bfcd4cd065deb4dd7de99017333c660feb12751a8481d0133c",
+      "expected_sha256": null,
+      "sha256_match": true
+    },
+    {
+      "name": "signed_session_manifest",
+      "path": "docs/session/signed_session_manifest.json",
+      "exists": true,
+      "sha256": "1ef840e0fbd9013dde9319b860b8914f2f8f242e3645be23730b9bc62e41dfed",
+      "expected_sha256": "1ef840e0fbd9013dde9319b860b8914f2f8f242e3645be23730b9bc62e41dfed",
+      "sha256_match": true
+    },
+    {
+      "name": "github_actions_anchor_intent",
+      "path": "docs/anchors/github_actions_anchor_intent.json",
+      "exists": true,
+      "sha256": "319e99ae27a02e7f9fe9241abce9d6702ee89f4f12562fb552dc25eaa898482f",
+      "expected_sha256": null,
+      "sha256_match": true
+    },
+    {
+      "name": "github_actions_anchor_receipt_from_download",
+      "path": "downloaded_stage345_artifact/github_actions_anchor_receipt.json",
+      "exists": true,
+      "sha256": "8ade4d7927a8738259d3a09c5980a7e1d4e1c83de3017a3b66603b7a6172f945",
+      "expected_sha256": null,
+      "sha256_match": true
+    }
+  ],
+  "checks": {
+    "stage343_accept": true,
+    "stage344_ready": true,
+    "stage345_accept": true,
+    "all_required_artifacts_exist": true,
+    "all_required_sha_match": true,
+    "downloaded_artifact_present": true
+  },
+  "reason": [
+    "stage343_accept_ok",
+    "stage344_ready_ok",
+    "stage345_accept_ok",
+    "all_required_artifacts_exist_ok",
+    "all_required_sha_match_ok",
+    "downloaded_artifact_present_ok"
+  ],
+  "note": "downloaded_stage345_artifact is intentionally excluded from GitHub. Stage346 relies on the Stage345 accept report as public proof of prior download verification.",
+  "safety_boundary": {
+    "private_keys_published": false,
+    "attack_code_published": false,
+    "dangerous_prompts_published": false,
+    "exploit_payloads_published": false,
+    "automated_attack_logic_published": false
+  },
+  "created_at": "2026-06-11T10:47:16.312694+00:00",
+  "meaning": "Stage346 verifies multiple public verification artifacts as a connected evidence set rather than checking only one downloaded GitHub artifact."
+}

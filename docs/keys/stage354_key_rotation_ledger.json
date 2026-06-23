@@ -1,0 +1,93 @@
+{
+  "stage": 354,
+  "engine": "Signature Key Rotation Ledger Layer",
+  "source_stage": 353,
+  "created_at": "2026-06-21T05:01:21Z",
+  "stage178_binding": {
+    "assumption": [
+      "Signing keys are not assumed to remain safe forever.",
+      "Keys may be rotated, revoked, replaced, or superseded.",
+      "Verification must consider key validity at signing time."
+    ],
+    "threat_model": [
+      "A compromised old key may be used to forge new evidence.",
+      "A revoked key may be used after revocation.",
+      "A key may be replaced without transparent history.",
+      "A future PQC migration may change valid signing algorithms."
+    ],
+    "guarantee": [
+      "Each signing key state transition is recorded in a transparent ledger.",
+      "Expired or revoked keys cannot be silently treated as valid for new signatures.",
+      "Verification can check key status against the claimed signing context.",
+      "No private keys or raw secret material are published."
+    ]
+  },
+  "key_ledger": {
+    "ledger_path": "docs/keys/stage354_key_rotation_ledger.json",
+    "previous_hash": "GENESIS",
+    "entry_hash": "06596d80b22dac854d674f5820d8ead42f040204c9a3c26e5c853e9d4227c38f",
+    "entry_count": 1
+  },
+  "latest_key_event": {
+    "event_type": "key_rotation_policy_initialization",
+    "key_scope": "stage351_signature_envelope",
+    "affected_algorithms": [
+      "gpg",
+      "sigstore_oidc",
+      "ed25519_witness",
+      "pqc_ml_dsa"
+    ],
+    "key_records": [
+      {
+        "key_id": "gpg-not-present",
+        "algorithm": "GPG",
+        "present": false,
+        "status": "not_configured",
+        "valid_from": null,
+        "valid_until": null,
+        "revoked_at": null,
+        "private_key_published": false
+      },
+      {
+        "key_id": "sigstore-oidc-required-in-ci",
+        "algorithm": "Sigstore-OIDC",
+        "present": false,
+        "status": "required_in_ci_not_present_locally",
+        "valid_from": null,
+        "valid_until": null,
+        "revoked_at": null,
+        "private_key_published": false
+      },
+      {
+        "key_id": "ed25519-witness-not-present",
+        "algorithm": "Ed25519",
+        "present": false,
+        "status": "not_configured",
+        "valid_from": null,
+        "valid_until": null,
+        "revoked_at": null,
+        "private_key_published": false
+      },
+      {
+        "key_id": "pqc-ml-dsa-intent",
+        "algorithm": "ML-DSA",
+        "standard": "NIST FIPS 204",
+        "present": false,
+        "status": "intent_only",
+        "valid_from": null,
+        "valid_until": null,
+        "revoked_at": null,
+        "private_key_published": false
+      }
+    ],
+    "previous_hash": "GENESIS",
+    "entry_hash": "06596d80b22dac854d674f5820d8ead42f040204c9a3c26e5c853e9d4227c38f"
+  },
+  "safety_boundary": {
+    "no_private_keys": true,
+    "no_raw_secrets": true,
+    "no_fake_rotation_claim": true,
+    "no_fake_pqc_key_claim": true,
+    "no_external_rekor_claim": true
+  }
+}

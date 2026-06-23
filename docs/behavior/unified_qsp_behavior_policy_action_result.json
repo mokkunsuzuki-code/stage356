@@ -1,0 +1,64 @@
+{
+  "stage": 339,
+  "engine": "Unified QSP Behavior Policy Action Gate",
+  "source_stages": [
+    268,
+    269,
+    284,
+    299,
+    305,
+    306,
+    328,
+    338
+  ],
+  "behavior_decision": "pass",
+  "trust_score": {
+    "time": 1.0,
+    "integrity": 1.0,
+    "execution": 1.0,
+    "identity": 1.0,
+    "total": 1.0
+  },
+  "evidence_checks": {
+    "same_target": true,
+    "evidence_files_present": true,
+    "sha256_bound": true,
+    "signature_present": true
+  },
+  "signature_checks": {
+    "signature_valid": true,
+    "verification_ok": true
+  },
+  "policy_result": "accept",
+  "action": "allow",
+  "reason": [
+    "behavior_passed",
+    "evidence_binding_satisfied",
+    "signature_valid",
+    "verification_ok",
+    "trust_score_sufficient",
+    "policy_accept"
+  ],
+  "fail_closed": true,
+  "deterministic_protocol": {
+    "deterministic": true,
+    "method": "same canonical input evaluated twice must produce the same canonical decision hash",
+    "input_fingerprint_sha256": "a2317d04938da3f9f7a85b75839e820987bd68e1896c8d41a5b1f4f2122fa8cd",
+    "first_decision_sha256": "a1303268eb13cb356891893d241a97c21a615dd6c926b5f4749696fc528bf98b",
+    "second_decision_sha256": "a1303268eb13cb356891893d241a97c21a615dd6c926b5f4749696fc528bf98b",
+    "same_input_same_output": true
+  },
+  "hashes": {
+    "policy_sha256": "85a5a8e586c86c17643e972dda370e760e6e1d7540305d82b384d0055d756ab4",
+    "input_sha256": "ec315c2c990fb702e0f557f0c4dd9dcafccd1ebdf63b3e8f14e944d4d4b7edb0",
+    "behavior_decision_sha256": "dd00d80ccd997111e543869842600cdce4b9521dcae291d322553c656c36ffb3",
+    "deterministic_decision_sha256": "a1303268eb13cb356891893d241a97c21a615dd6c926b5f4749696fc528bf98b"
+  },
+  "safety_boundary": {
+    "no_attack_code": true,
+    "no_dangerous_prompts": true,
+    "no_payloads": true,
+    "no_exploit_automation": true
+  },
+  "created_at": "2026-06-03T11:27:48.241380+00:00"
+}

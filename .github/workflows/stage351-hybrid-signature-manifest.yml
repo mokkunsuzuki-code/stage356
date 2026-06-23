@@ -1,0 +1,25 @@
+name: Stage351 Hybrid Signature Manifest
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-signature-manifest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Stage351 signature manifest
+        run: |
+          python3 scripts/stage351_build_hybrid_signature_manifest.py
+
+      - name: Upload Stage351 signature manifest
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stage351-signature-manifest
+          path: docs/signatures/stage351_signature_manifest.json

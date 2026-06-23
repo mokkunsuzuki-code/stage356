@@ -1,0 +1,27 @@
+name: Stage350 Supply-Chain Evidence Enforcement
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  enforce:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run Stage350 Enforcement Session
+        run: |
+          python3 scripts/stage350_build_enforcement_session.py
+
+      - name: Upload Stage350 Enforcement Evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stage350-enforcement-evidence
+          path: |
+            docs/enforcement/enforcement_session.json
+            docs/audit/stage350-transparency-log.json

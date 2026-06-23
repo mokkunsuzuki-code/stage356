@@ -1,0 +1,28 @@
+name: Stage353 Verification Transparency Chain
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-verification-transparency:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Stage353 verification transparency chain
+        run: |
+          python3 scripts/stage353_build_verification_transparency_chain.py
+
+      - name: Upload Stage353 transparency evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stage353-verification-transparency-chain
+          path: |
+            docs/transparency/stage353_verification_transparency_result.json
+            docs/transparency/stage353_verification_transparency_chain.json
+            docs/transparency/stage353_verification_transparency_summary.txt

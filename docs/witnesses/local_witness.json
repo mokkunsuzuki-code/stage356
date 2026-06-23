@@ -1,0 +1,9 @@
+{
+  "stage": 340,
+  "type": "local_witness",
+  "session_id": "verification-session-74239f8d385143c285851878c2dedd78",
+  "witnessed_artifact": "docs/session/session_manifest.json",
+  "session_manifest_sha256": "0c8048d70faf08816e0829e1b50727ef82a3d7d94fe19d8c8e5b692ed6121be3",
+  "created_at": "2026-06-04T05:29:16.161788+00:00",
+  "meaning": "This witness records the SHA256 of the session manifest for independent verification."
+}

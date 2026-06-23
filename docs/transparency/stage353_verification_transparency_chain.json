@@ -1,0 +1,30 @@
+{
+  "stage": 353,
+  "engine": "Verification Transparency Chain Layer",
+  "source_stage": 352,
+  "chain_rule": "Each Stage352 verification result entry stores previous_hash and entry_hash.",
+  "entries": [
+    {
+      "stage": 353,
+      "entry_type": "stage352_verification_result",
+      "source_stage": 352,
+      "created_at": "2026-06-20T07:39:24.115156+00:00",
+      "verification_result_path": "docs/signatures/stage352_signature_manifest_verification.json",
+      "verification_result_sha256": "494f40d1d8eca3c75da3a841424d6a878859c0d8f12435b7718f914e2b601558",
+      "stage352_decision": "accept_metadata_only",
+      "previous_hash": "GENESIS",
+      "entry_hash": "6dc2762558c616fd0982f9e94fe871c61e489077e585220e716de969b1974e21"
+    },
+    {
+      "stage": 353,
+      "entry_type": "stage352_verification_result",
+      "source_stage": 352,
+      "created_at": "2026-06-20T07:40:03.579506+00:00",
+      "verification_result_path": "docs/signatures/stage352_signature_manifest_verification.json",
+      "verification_result_sha256": "494f40d1d8eca3c75da3a841424d6a878859c0d8f12435b7718f914e2b601558",
+      "stage352_decision": "accept_metadata_only",
+      "previous_hash": "6dc2762558c616fd0982f9e94fe871c61e489077e585220e716de969b1974e21",
+      "entry_hash": "7423247c7b2b39dd42b86d4b27c5e63a5ace5b0d721a6733d6ced08d2943a270"
+    }
+  ]
+}

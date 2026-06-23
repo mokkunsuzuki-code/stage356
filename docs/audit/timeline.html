@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Stage333 Transparency Timeline</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 900px; margin: 40px auto; padding: 20px; line-height: 1.6; }
+    .card { border: 1px solid #ddd; border-radius: 14px; padding: 18px; margin: 16px 0; }
+    code { background: #f4f4f4; padding: 2px 5px; border-radius: 6px; }
+    .ok { color: #0a7f3f; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <h1>Stage333 Transparency Timeline</h1>
+
+  <p>
+    Stage333 upgrades a signed execution session into an append-only transparency history.
+  </p>
+
+  <div id="timeline">Loading...</div>
+
+  <script>
+    fetch("./transparency-log.json")
+      .then(r => r.json())
+      .then(log => {
+        const el = document.getElementById("timeline");
+        el.innerHTML = "";
+
+        log.forEach((entry, index) => {
+          const div = document.createElement("div");
+          div.className = "card";
+          div.innerHTML = `
+            <h2>Entry ${index + 1}</h2>
+            <p><strong>Timestamp:</strong> ${entry.timestamp}</p>
+            <p><strong>Artifact:</strong> <code>${entry.artifact}</code></p>
+            <p><strong>Artifact SHA256:</strong><br><code>${entry.artifact_sha256}</code></p>
+            <p><strong>Signature Present:</strong> <span class="ok">${entry.signature_present}</span></p>
+            <p><strong>Previous Hash:</strong><br><code>${entry.previous_hash || "GENESIS"}</code></p>
+            <p><strong>Entry Hash:</strong><br><code>${entry.entry_hash}</code></p>
+          `;
+          el.appendChild(div);
+        });
+      });
+  </script>
+</body>
+</html>

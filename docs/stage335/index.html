@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>Stage335 Safe AI Vulnerability Intelligence Fetcher</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 960px; margin: 40px auto; padding: 20px; line-height: 1.7; }
+    .card { border: 1px solid #ddd; border-radius: 16px; padding: 20px; margin: 18px 0; }
+    pre { background: #f6f6f6; padding: 14px; border-radius: 10px; overflow-x: auto; }
+    .safe { color: #0a7f3f; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <h1>Stage335 Safe AI Vulnerability Intelligence Fetcher</h1>
+
+  <div class="card">
+    <h2>役割</h2>
+    <p>
+      Stage335は、AI脆弱性情報を安全な監査メタデータとして収集する層です。
+      危険な攻撃コードや危険Promptは公開しません。
+    </p>
+    <p class="safe">
+      公開するのは、安全な分類・概要・件数・SHA256・透明ログだけです。
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>公開層と非公開層</h2>
+    <pre>公開:
+安全メタデータ
+分類
+監査履歴
+透明ログ
+SHA256
+
+非公開:
+内部Runner
+安全再現テンプレート
+AI反応解析
+照合ロジック</pre>
+  </div>
+
+  <div class="card">
+    <h2>Stage334 → Stage335</h2>
+    <pre>Stage334 AI Vulnerability Watch Atlas
+↓
+AI脆弱性図鑑
+↓
+Stage335 Safe Intelligence Fetcher
+↓
+安全メタデータ収集
+↓
+透明ログ記録
+↓
+内部Runnerへ接続準備</pre>
+  </div>
+
+  <div class="card">
+    <h2>Watch Summary</h2>
+    <pre id="summary">Loading...</pre>
+  </div>
+
+  <div class="card">
+    <h2>Safe Intelligence Feed</h2>
+    <pre id="feed">Loading...</pre>
+  </div>
+
+  <div class="card">
+    <h2>Collection Transparency Log</h2>
+    <pre id="log">Loading...</pre>
+  </div>
+
+  <script>
+    fetch("./watch-summary.json")
+      .then(r => r.json())
+      .then(data => {
+        document.getElementById("summary").textContent = JSON.stringify(data, null, 2);
+      });
+
+    fetch("./safe-intelligence-feed.json")
+      .then(r => r.json())
+      .then(data => {
+        document.getElementById("feed").textContent = JSON.stringify(data.items, null, 2);
+      });
+
+    fetch("./collection-transparency-log.json")
+      .then(r => r.json())
+      .then(data => {
+        document.getElementById("log").textContent = JSON.stringify(data, null, 2);
+      });
+  </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+{
+  "stage": 350,
+  "engine": "Stage350 Enforcement Transparency Chain",
+  "chain_rule": "Each entry stores previous_hash and entry_hash",
+  "entries": [
+    {
+      "stage": 350,
+      "entry_type": "enforcement_session",
+      "created_at": "2026-06-13T04:22:36.145542+00:00",
+      "previous_hash": "GENESIS",
+      "session_sha256": "5b546fd52287917cebf8c550b3f79ea4be31194448b6a490d1a04bd24a740822",
+      "decision": "warn",
+      "source_git_commit": "local-uncommitted",
+      "ci_environment": false,
+      "violations": [
+        "SOURCE_GIT_COMMIT_IS_LOCAL_UNCOMMITTED",
+        "WRAP_SIGNATURE_REQUIRED_BUT_NOT_PRESENT"
+      ],
+      "entry_hash": "2a75e7e66af5fa29955d75da2b1ead883cf7e7f6c109274fdd3f6baad6206803"
+    },
+    {
+      "stage": 350,
+      "entry_type": "enforcement_session",
+      "created_at": "2026-06-13T04:24:02.625923+00:00",
+      "previous_hash": "2a75e7e66af5fa29955d75da2b1ead883cf7e7f6c109274fdd3f6baad6206803",
+      "session_sha256": "91e3d09ddfec7e30ca6d4539a58498db121ff0e09ff41c7b13d1f69838dfb42c",
+      "decision": "warn",
+      "source_git_commit": "local-uncommitted",
+      "ci_environment": false,
+      "violations": [
+        "SOURCE_GIT_COMMIT_IS_LOCAL_UNCOMMITTED",
+        "WRAP_SIGNATURE_REQUIRED_BUT_NOT_PRESENT"
+      ],
+      "entry_hash": "97966117fea119220215eec08da508b8cca8b61253f942f20d35745706bccec9"
+    },
+    {
+      "stage": 350,
+      "entry_type": "enforcement_session",
+      "created_at": "2026-06-13T04:24:41.225524+00:00",
+      "previous_hash": "97966117fea119220215eec08da508b8cca8b61253f942f20d35745706bccec9",
+      "session_sha256": "75199e5c7cbce302f7726bbc5e5643cb6a82928286302c6d093754ddee050183",
+      "decision": "warn",
+      "source_git_commit": "local-uncommitted",
+      "ci_environment": false,
+      "violations": [
+        "SOURCE_GIT_COMMIT_IS_LOCAL_UNCOMMITTED",
+        "WRAP_SIGNATURE_REQUIRED_BUT_NOT_PRESENT"
+      ],
+      "entry_hash": "06f9bbdc5f58a87bed413695247da8495741173dc061f5a9741cec7ed7541e9c"
+    },
+    {
+      "stage": 350,
+      "entry_type": "enforcement_session",
+      "created_at": "2026-06-13T04:36:41.533675+00:00",
+      "previous_hash": "06f9bbdc5f58a87bed413695247da8495741173dc061f5a9741cec7ed7541e9c",
+      "session_sha256": "67c3e099658ec29646ce993d54466116b978739e501f518e579799ddad939cd9",
+      "decision": "warn",
+      "source_git_commit": "local-uncommitted",
+      "ci_environment": false,
+      "violations": [
+        "SOURCE_GIT_COMMIT_IS_LOCAL_UNCOMMITTED",
+        "WRAP_SIGNATURE_REQUIRED_BUT_NOT_PRESENT"
+      ],
+      "entry_hash": "5439a71cf8ef58e6ce0224b52837d7f4fe72d50848871eaca8fe16e410f6a0a2"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "QuantumSafeEvidenceSchema",
+  "type": "object",
+  "required": [
+    "stage",
+    "source_stage",
+    "schema_version",
+    "producer_id",
+    "source_git_commit",
+    "evidence_sha256",
+    "schema_sha256",
+    "signature_present",
+    "sigstore_bundle_present",
+    "artifacts"
+  ],
+  "properties": {
+    "stage": { "const": 348 },
+    "source_stage": { "const": 347 },
+    "schema_version": { "type": "string" },
+    "producer_id": { "type": "string", "minLength": 1 },
+    "source_git_commit": { "type": "string", "minLength": 7 },
+    "evidence_sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
+    "schema_sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
+    "signature_present": { "type": "boolean" },
+    "sigstore_bundle_present": { "type": "boolean" },
+    "artifacts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "domain",
+          "algorithm",
+          "metadata_present",
+          "hash_bound",
+          "private_key_published",
+          "raw_key_material_published"
+        ],
+        "properties": {
+          "name": { "type": "string" },
+          "domain": { "enum": ["PQC", "QKD"] },
+          "algorithm": { "enum": ["ML-KEM", "ML-DSA", "SLH-DSA", "QKD-SESSION", "QKD-FAILOVER"] },
+          "metadata_present": { "type": "boolean" },
+          "hash_bound": { "type": "boolean" },
+          "private_key_published": { "type": "boolean" },
+          "raw_key_material_published": { "type": "boolean" },
+          "absolute_security_claim": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}

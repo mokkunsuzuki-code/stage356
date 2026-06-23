@@ -1,0 +1,28 @@
+Stage354 Signature Key Rotation Ledger Layer
+
+Decision:
+accept_policy_initialization
+
+What Stage354 adds:
+- Signature key rotation ledger initialization
+- Stage178 Assumption / Threat Model / Guarantee binding
+- GPG / Sigstore OIDC / Ed25519 / ML-DSA key lifecycle records
+- previous_hash / entry_hash ledger chaining
+- private key publication prevention
+- PQC ML-DSA recorded as intent_only, not active key
+
+Safety boundary:
+- No private keys
+- No raw secrets
+- No fake key rotation claim
+- No fake PQC active key claim
+- No external Rekor claim
+
+Ledger entry hash:
+06596d80b22dac854d674f5820d8ead42f040204c9a3c26e5c853e9d4227c38f
+
+Ledger file:
+docs/keys/stage354_key_rotation_ledger.json
+
+Result file:
+docs/keys/stage354_key_rotation_result.json
